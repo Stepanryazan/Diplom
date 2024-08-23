@@ -21,7 +21,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'app'
+    'rest_framework',
+    'rest_framework_simplejwt',
+    'corsheaders',
+    'drf_yasg',
+
+    'app',
+    'users'
 ]
 
 MIDDLEWARE = [
@@ -57,6 +63,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
+        "ENGINE": "django.db.backends.postgresql",
         "NAME": os.getenv("POSTGRES_DB"),
         "USER": os.getenv("POSTGRES_USER"),
         "PASSWORD": os.getenv("POSTGRES_PASSWORD")
@@ -90,6 +97,12 @@ USE_TZ = True
 
 
 STATIC_URL = 'static/'
+
+
+AUTH_USER_MODEL = 'users.User'
+
+
+ELASTICSEARCH_URL = 'http://es:9200'  # Имя сервиса Elasticsearch в docker-compose.yml
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
