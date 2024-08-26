@@ -4,7 +4,7 @@ from elasticsearch import Elasticsearch
 from .models import Document
 from .serializers import DocumentSerializer
 
-es = Elasticsearch()
+es = Elasticsearch(['https://localhost:9200'])
 
 
 class DocumentViewSet(viewsets.ViewSet):
