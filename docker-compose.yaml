@@ -11,20 +11,25 @@ services:
          POSTGRES_USER: ${POSTGRES_USER}
          POSTGRES_HOST: ${POSTGRES_HOST}
        ports:
-         - "5432:5432"
+         - "5432"
 
      es:
-       image: elasticsearch:latest
+       image: elasticsearch:6.5.0
        ports:
          - "9200:9200"
 
-     web:
+     app:
        build: .
-       command: python manage.py runserver 0.0.0.0:8000
-       volumes:
-         - .:/app
+       tty: true
        ports:
          - "8000:8000"
+       restart: on-failure
+       command: sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+       volumes:
+         - .:/app
        depends_on:
          - db
          - es
+
+       env_file:
+         - .env

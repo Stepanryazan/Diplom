@@ -108,3 +108,8 @@ ELASTICSEARCH_URL = 'http://es:9200'  # Имя сервиса Elasticsearch в d
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+CORS_ALLOWED_ORIGINS = ['http://localhost:8000',]
+CSRF_TRUSTED_ORIGINS = ['http://localhost:8000',]
+CORS_ALLOW_ALL_ORIGINS = False

@@ -19,7 +19,6 @@ django-celery-beat==2.6.0
 setuptools~=69.1.1
 stripe==10.3.0
 eventlet==0.36.1
-elastic==5.2.3.8
 numpy==2.1.0
 elasticsearch~=8.15.0
 pip~=24.2
