@@ -27,7 +27,6 @@ INSTALLED_APPS = [
     'drf_yasg',
 
     'app',
-    'users'
 ]
 
 MIDDLEWARE = [
@@ -99,9 +98,6 @@ USE_TZ = True
 
 
 STATIC_URL = 'static/'
-
-
-AUTH_USER_MODEL = 'users.User'
 
 
 ELASTICSEARCH_URL = 'http://es:9200'  # Имя сервиса Elasticsearch в docker-compose.yml
