@@ -20,6 +20,8 @@ services:
        image: elasticsearch:6.5.0
        ports:
          - "9200:9200"
+       volumes:
+         - esdata:/usr/share/elasticsearch/data
 
      app:
        build: .
@@ -28,11 +30,16 @@ services:
          - "8000:8000"
        restart: on-failure
        command: sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+       depends_on:
+         db:
+           condition: service_healthy
+         es:
+           condition: service_healthy
        volumes:
          - .:/app
-       depends_on:
-         - db
-         - es
-
        env_file:
          - .env
+
+volumes:
+     pg_data:
+     esdata:
