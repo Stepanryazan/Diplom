@@ -1,7 +1,7 @@
 from django.urls import path
-from .views import DocumentViewSet
+from .views import DocumentSearchView, DocumentDeleteView
 
 urlpatterns = [
-    path('', DocumentViewSet.as_view({'get': 'list'})),
-    path('', DocumentViewSet.as_view({'delete': 'destroy'})),
+    path('', DocumentSearchView.as_view(), name='document_search'),
+    path('', DocumentDeleteView.as_view(), name='document_delete'),
 ]
