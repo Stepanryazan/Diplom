@@ -1,6 +1,6 @@
 from elasticsearch import Elasticsearch
 
-es = Elasticsearch()
+es = Elasticsearch(['http://es:9200'])
 
 def create_index():
     es.indices.create(
